@@ -21,6 +21,7 @@ $(document).ready(function() {
     listPosts.out()
     logIn.out()
     e404.out()
+    addEvent.out()
 
     $('html,body').scrollTop(0)
   }
@@ -43,6 +44,16 @@ $(document).ready(function() {
     addPostController();
   }
 
+  var addEventView = function () {
+    clearApp()
+    isUser(function(){ // is a user
+      addEvent.in('fadeIn');
+    }, function() { // is not a user
+      window.location = "#/login";
+    });
+    addEventController();
+  }
+
   var logInView = function() {
     clearApp()
     logIn.in();
@@ -53,6 +64,8 @@ $(document).ready(function() {
   // Set up routes
   crossroads.addRoute('/', listPostsView);
   crossroads.addRoute('/add', addPostView);
+  crossroads.addRoute('/post/add', addPostView);
+  crossroads.addRoute('/event/add', addEventView);
   crossroads.addRoute('/login', logInView);
 
   // that's a 404 if the route structure is not matched
@@ -102,6 +115,31 @@ $(document).ready(function() {
 
       }
     })
+
+    get("Events", 10).then(function(d){
+      eventsToday.empty()
+      eventsTomorrow.empty()
+      for(var i=0; i < d.length ; i++) {
+        var now = moment();
+        var activeDate = moment(d[i].eventDate, "DD/MM/YYYY");
+        if(d[i].eventTitle) { var title = d[i].eventTitle }
+        else {var title = ""}
+        if(d[i].eventTime) { var time = d[i].eventTime }
+        else {var time = ""}
+        if (now.startOf('day').isSame(activeDate.startOf('day'))) {
+            // Is today
+            eventsToday.append(time + " - " + title + "<br />");
+        } else {
+            // is tomorrow
+            var tomorrow = now.add(1, 'days')
+            if (tomorrow.startOf('day').isSame(activeDate.startOf('day'))) {
+              eventsTomorrow.append(time + " - " + title + "<br />");
+            } else {
+              // don't print
+            }
+        }
+      }
+    })
   }
 
   // Controller, "/add"
@@ -132,6 +170,43 @@ $(document).ready(function() {
         clicked = true;
       }
     })
+  }
+
+  function addEventController() {
+    eventDate.datepicker({
+      autoclose: 'enabled',
+      format: 'dd/mm/yyyy',
+      todayHighlight: true
+    })
+
+    // reset form
+    eventTime.val("")
+    eventTitle.val("")
+    eventDate.val("")
+
+    addEventSubmit.on('click', function(event) {
+      event.preventDefault();
+      addEventForm.submit();
+    });
+
+    var clicked = false;
+    addEventForm.on("submit", function(event) {
+      event.preventDefault();
+      addEventSubmit.prepend("<input type='hidden' name='userName' value='"+J.userName+"'>")
+      addEventSubmit.prepend("<input type='hidden' name='userId' value='"+J.userId+"'>")
+      if(clicked === false) {
+        pleaseWait.in()
+        addEventSubmit.attr('disabled','disabled')
+        save('Events', 'addEventForm').then(function(resp){
+          addEventSubmit.removeAttr('disabled');
+          pleaseWait.out()
+          window.location = "#"
+        })
+        clicked = true;
+      }
+    })
+
+
   }
 
   function logInController(){
