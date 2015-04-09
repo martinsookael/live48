@@ -9,6 +9,11 @@ $(document).ready(function() {
   $("#loading").out()
   $("#app").in("fadeIn")
 
+  // refresh the site every minute
+  setTimeout(function(){
+    location.reload();
+  }, 60000);
+
   function clearApp(){
     addPost.out()
     onePost.out()
