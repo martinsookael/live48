@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 $(document).ready(function() {
 
@@ -43,14 +43,6 @@ $(document).ready(function() {
     addPostController();
   }
 
-  // turned off since not in use currently
-  /*
-  var onePostView = function (id) {
-    clearApp()
-    onePost.in('fadeIn');
-    onePostController(id);
-  } */
-
   var logInView = function() {
     clearApp()
     logIn.in();
@@ -62,8 +54,6 @@ $(document).ready(function() {
   crossroads.addRoute('/', listPostsView);
   crossroads.addRoute('/add', addPostView);
   crossroads.addRoute('/login', logInView);
-  //crossroads.addRoute('/p/{id}', onePostView);   // turned off since not in use currently
-
 
   // that's a 404 if the route structure is not matched
   crossroads.bypassed.add(function(request){
@@ -129,6 +119,8 @@ $(document).ready(function() {
     var clicked = false;
     addPostForm.on("submit", function(event) {
       event.preventDefault();
+      addPostSubmit.prepend("<input type='hidden' name='userName' value='"+J.userName+"'>")
+      addPostSubmit.prepend("<input type='hidden' name='userId' value='"+J.userId+"'>")
       if(clicked === false) {
         pleaseWait.in()
         addPostSubmit.attr('disabled','disabled')
@@ -157,35 +149,4 @@ $(document).ready(function() {
       });
     })
   }
-
-  // Controller, "/p/{id}"
-  // turned off cause currently not in use
-  /*
-  function onePostController(id) {
-    get("Posts", 1,  id).then(function(data_0) {
-      var data = data_0[0]
-      if(data_0.error === "No such post" || data_0.error === "Query is confused") {
-        e404.in()
-      } else {
-        if(typeof data.titles === "string") {
-          data.titles = JSON.parse(data.titles);
-        }
-        onePost.empty();
-        $.each(data, function(key, value) {
-          if(key == "updatedAt" || key == "createdAt" || key == "objectId") {}
-          else {
-            if(value.length>0) {
-              onePost.append("<h4>"+data.titles[key]+"<h4>");
-              onePost.append(value);
-            }
-            // if it's a parse url
-            if(value.url) {
-              onePost.append("<h4>"+data.titles[key]+"<h4>");
-              onePost.append("<img src='"+value.url+"' style='width: 300px; height: auto;'>");
-            }
-          }
-        })
-      }
-    });
-  } */
 });

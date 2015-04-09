@@ -171,10 +171,8 @@ function prepareForm(formName) {
     break;
 
     case "hidden":
-      if (t.attr("name") === "userId") {
-        fd.append(t.attr("name"), t.attr("value")); // add the value of the input
-        titles[t.attr("name")] = t.attr("value") // at the label to titles array
-      }
+      fd.append(t.attr("name"), t.attr("value")); // add the value of the input
+      titles[t.attr("name")] = t.attr("value") // at the label to titles array
     break;
 
     case "file":
