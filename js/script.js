@@ -96,7 +96,7 @@ $(document).ready(function() {
           else if(pointer >= d.length) { pointer = 0; var last = d.length }
           else {last = pointer-1}
           $("#frame_"+last).out()
-          $("#frame_"+pointer).in()
+          $("#frame_"+pointer).in('fadeIn')
           pointer ++;
         }
 
