@@ -1,0 +1,86 @@
+
+html, body, #app, #listPosts {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+#loading {
+  width: 100%;
+  text-align: center;
+  margin-top: 150px;
+}
+
+#app {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#add {
+  position: relative;
+}
+
+#listPosts {
+}
+
+#addPostForm {
+  text-align: left;
+  margin-top: 25px;
+}
+
+#onePost {
+  margin-top: 50px;
+}
+
+#alert {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+
+#alert>button {
+  margin-top: 15px; margin-right: 15px;
+}
+
+.full {
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 20px;
+  background-color: #ccc;
+}
+
+.frame {
+  text-align: center; padding-top: 25%; padding-left: 10%; padding-right: 10%;
+}
+
+.frame>h1 {
+  font-size: 50pt; color: #fff; text-shadow: 2px 2px #000;
+}
+
+
+.glyphicon-refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}

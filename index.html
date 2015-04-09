@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Live48</title>
+      <link rel="stylesheet" href="/b/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/b/bootstrap/dist/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="/b/animate.css/animate.min.css">
+      <link rel="stylesheet" href="/css/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <script>
+        // test account for jay, works on localhost:5000
+        //var fbAppId = "756437764450452" // if fbAppId is undefined, FB SDK is not added
+
+        var fbAppId = "844651995608339" // if fbAppId is undefined, FB SDK is not added
+
+        844651995608339
+      </script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+
+    <div id="pleaseWait" class="hidden" style="position: fixed; top: 0; width: 100%; text-align: center; padding-top: 15px; height: 50px; background: #eee; z-index: 21;">
+      SAVING... &nbsp;&nbsp;<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+    </div>
+
+    <div id="loading">
+      Loading...
+    </div>
+    <div id="app" class="hidden container">
+
+
+      <!--<a href="#" id="home" type="button" class="btn btn-default pull-left" aria-label="Home">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> &nbsp;&nbsp;Home
+      </a>
+
+      <a href="#/add" id="add" type="button" class="btn btn-default pull-right" aria-label="Add new">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> &nbsp;&nbsp;Add post
+      </a>-->
+
+      <div class="clearfix"></div>
+
+      <div id="listPosts" class="hidden">
+
+      </div>
+
+      <div id="onePost" class="hidden">
+      </div>
+
+      <div id="e404" class="hidden">
+        <h1>Error 404</h1>
+        <h2> Post not found </h2>
+      </div>
+
+      <div id="addPost" class="hidden" style="width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <br />
+        <h1 style="margin-bottom: 0px;">Add post</h1>
+        <form id="addPostForm">
+          <p>
+            <label for="title">Title</label><br />
+            <input id="title" type="text" class="form-control" /><br />
+          </p>
+          <p>
+            <label for="addImage">Backgroundimage</label><br />
+            <input id="addImage" type="file" class="form-control" /><br />
+          </p>
+          <input id="addPostSubmit" class="btn button" value="Submit" type="submit">
+        </form>
+      </div>
+
+      <div id="logIn" class="hidden" style="text-align: center; margin-top: 50px;">
+        <a href="#" id='fbLogin' type='button' class='btn' style="background: #3b55a0; color: #fff;  width: 50%; height: 60px; padding-top: 20px; margin-top: 20px; margin-bottom: 20px;">
+          <img style="margin-top: -4px; margin-right: 15px;" class="" src="/img/fb.png" />
+          Logi sisse Facebookiga<br />
+        </a>
+      </div>
+    </div>
+
+    <script src="/b/jquery/dist/jquery.min.js"></script>
+    <script src="/b/js-signals/dist/signals.min.js"></script>
+    <script src="/b/hasher/dist/js/hasher.min.js"></script>
+    <script src="/b/crossroads/dist/crossroads.min.js"></script>
+    <script src="/b/html5shiv/dist/html5shiv.js"></script>
+    <script src="/b/respond/dest/respond.min.js"></script>
+    <script src="/b/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/b/momentjs/min/moment.min.js"></script>
+    <script src="/b/jay/dist/jay.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
