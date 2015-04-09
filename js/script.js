@@ -7,12 +7,12 @@ $(document).ready(function() {
 
   // hide loadin + show app
   $("#loading").out()
-  $("#app").in("fadeIn")
+  $("#app").in()
 
   // refresh the site every minute
   setTimeout(function(){
     location.reload();
-  }, 60000);
+  }, 1200000);
 
   function clearApp(){
     addPost.out()
@@ -29,7 +29,7 @@ $(document).ready(function() {
   // Front page view
   var listPostsView = function () {
     clearApp()
-    listPosts.in('fadeIn')
+    listPosts.in()
     listPostsController()
   }
 

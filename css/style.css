@@ -25,6 +25,7 @@ p {
 }
 
 #listPosts {
+  background: #000;
 }
 
 #addPostForm {
