@@ -22,6 +22,8 @@ $(document).ready(function() {
     logIn.out()
     e404.out()
     addEvent.out()
+    help.out()
+    calendar.out()
 
     $('html,body').scrollTop(0)
   }
@@ -31,6 +33,8 @@ $(document).ready(function() {
   var listPostsView = function () {
     clearApp()
     listPosts.in()
+    help.in()
+    calendar.in()
     listPostsController()
   }
 
